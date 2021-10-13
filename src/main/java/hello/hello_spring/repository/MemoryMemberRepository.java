@@ -11,7 +11,9 @@ public class MemoryMemberRepository implements MemberRepository {
 
     @Override
     public Member save(Member member) {
-        return null;
+        member.setId(++sequence);
+        store.put(member.getId(),member);
+        return member;
     }
 
     @Override
@@ -30,5 +32,9 @@ public class MemoryMemberRepository implements MemberRepository {
     @Override
     public List<Member> findAll() {
         return new ArrayList<>(store.values());
+    }
+
+    public void clearStore() {
+        store.clear();
     }
 }
