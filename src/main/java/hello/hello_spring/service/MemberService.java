@@ -7,9 +7,13 @@ import java.util.List;
 import java.util.Optional;
 
 public class MemberService {
-
+    //ctrl+shift+t 를 이용해 테스트파일을 바로 만들 수 있다.
     //final이 붙은 변수,메서드는 한 번 선언(초기화) 이후 변경할 수 없음
-    private final MemoryMemberRepository memberRepository = new MemoryMemberRepository();
+    private final MemoryMemberRepository memberRepository;
+
+    public MemberService(MemoryMemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
+    }
 
     public Long join(Member member){
         // 이름 중복X
